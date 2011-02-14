@@ -1,3 +1,3 @@
-bin_PROGRAMS=a.out
-a_out_SOURCES=breakout.cpp
-
+bin_PROGRAMS=breakout
+breakout_SOURCES=breakout.cpp
+breakout_LDADD = -lSDL
