@@ -12,8 +12,15 @@ Level::Level(string name, SDL_Rect dimensions) {
 	this->surface = SDL_CreateRGBSurface(SDL_HWSURFACE, dimensions.x, dimensions.y, 32, 0, 0, 0, 0);
 }
 
+static bool deleteAll(Brick* theElement) {
+	delete theElement;
+	return true;
+}
+
 Level::~Level() {
 	SDL_FreeSurface(this->surface);
+
+	while(!bricks->empty()) delete bricks->back(), bricks->pop_back();
 
 	delete bricks;
 }
@@ -38,13 +45,11 @@ void Level::setName(string name) {
 	this->name = name;
 }
 
-std::vector<Brick*> *Level::getBricks() const
-{
+std::vector<Brick*>* Level::getBricks() const {
 	return bricks;
 }
 
-void Level::setBricks(std::vector<Brick*> *bricks)
-{
+void Level::setBricks(std::vector<Brick*> *bricks) {
 	this->bricks = bricks;
 }
 
