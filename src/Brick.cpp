@@ -1,35 +1,12 @@
 
+#include <SDL/SDL.h>
+
 #include "Brick.h"
 
-unsigned int Brick::getH() const {
-	return h;
+Brick::Brick(SDL_Rect dimensions) {
+	this->dimensions = dimensions;
 }
 
-unsigned int Brick::getW() const {
-	return w;
+SDL_Rect Brick::getDimensions() {
+	return this->dimensions;
 }
-
-unsigned int Brick::getX() const {
-	return x;
-}
-
-unsigned int Brick::getY() const {
-	return y;
-}
-
-void Brick::setH(unsigned int h) {
-	this->h = h;
-}
-
-void Brick::setW(unsigned int w) {
-	this->w = w;
-}
-
-void Brick::setX(unsigned int x) {
-	this->x = x;
-}
-
-void Brick::setY(unsigned int y) {
-	this->y = y;
-}
-

@@ -3,21 +3,11 @@
 
 class Brick {
 private:
-	unsigned int x;
-	unsigned int y;
-
-	unsigned int w;
-	unsigned int h;
+	SDL_Rect dimensions;
 
 public:
-	unsigned int getH() const;
-	unsigned int getW() const;
-	unsigned int getX() const;
-	unsigned int getY() const;
-	void setH(unsigned int h);
-	void setW(unsigned int w);
-	void setX(unsigned int x);
-	void setY(unsigned int y);
+	Brick(SDL_Rect dimensions);
+	SDL_Rect getDimensions();
 };
 
 #endif /* BRICK_H_ */
