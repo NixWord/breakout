@@ -1,6 +1,8 @@
 #ifndef BRICK_H_
 #define BRICK_H_
 
+#include <SDL/SDL.h>
+
 class Brick {
 private:
 	SDL_Rect dimensions;
