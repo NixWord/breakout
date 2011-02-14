@@ -8,6 +8,8 @@ private:
 public:
 	Brick(SDL_Rect dimensions);
 	SDL_Rect getDimensions();
+
+	int draw(SDL_Surface* surface);
 };
 
 #endif /* BRICK_H_ */
