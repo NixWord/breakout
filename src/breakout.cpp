@@ -1,14 +1,23 @@
 #include <SDL/SDL.h>
 
+#include "LevelGenerator.h"
+
 int main(void) {
 	SDL_Surface* screen = NULL;
-	SDL_Event event;
+
+	SDL_Rect applicationSize = {0, 0, 640, 480};
 
 	SDL_Init(SDL_INIT_VIDEO);
 
-	screen = SDL_SetVideoMode(640, 480, 32, SDL_HWSURFACE);
+	screen = SDL_SetVideoMode(applicationSize.w, applicationSize.h, 32, SDL_HWSURFACE);
 	SDL_WM_SetCaption("Breakout", NULL);
 
+	SDL_Rect brickShape = {0, 0, 60, 20};
+	LevelGenerator* generator = new LevelGenerator(applicationSize, brickShape);
+
+	Level* defaultLevel = generator->generate();
+
+	SDL_Event event;
 	bool loop = true;
 	while (loop) {
 		SDL_WaitEvent(&event);
@@ -32,7 +41,12 @@ int main(void) {
 		default:
 			break;
 		}
+		defaultLevel->draw(screen);
 	}
+
+	delete defaultLevel;
+
+	delete generator;
 
 	SDL_Quit();
 

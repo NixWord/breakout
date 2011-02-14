@@ -5,6 +5,10 @@
 #include "Level.h"
 
 class LevelGenerator {
+private:
+	SDL_Rect levelRect;
+	SDL_Rect brickRect;
+
 public:
 	LevelGenerator(SDL_Rect level, SDL_Rect brick);
 	virtual ~LevelGenerator();
