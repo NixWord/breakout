@@ -14,6 +14,8 @@ Level::Level(string name, SDL_Rect dimensions) {
 
 Level::~Level() {
 	SDL_FreeSurface(this->surface);
+
+	delete bricks;
 }
 
 int Level::draw(SDL_Surface* screen) {
@@ -34,5 +36,15 @@ void Level::setDimensions(SDL_Rect dimensions) {
 
 void Level::setName(string name) {
 	this->name = name;
+}
+
+std::vector<Brick*> *Level::getBricks() const
+{
+	return bricks;
+}
+
+void Level::setBricks(std::vector<Brick*> *bricks)
+{
+	this->bricks = bricks;
 }
 

@@ -13,5 +13,6 @@ LevelGenerator::~LevelGenerator() {
 
 Level* LevelGenerator::generate() {
 	Level* level = new Level("Generated Level", this->levelRect);
+	ve
 	return level;
 }
