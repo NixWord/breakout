@@ -6,11 +6,12 @@
 class Ball {
 private:
 	SDL_Rect position;
+	SDL_Rect screenSize;
 	double speed;
 	double direction;
 
 public:
-	Ball(SDL_Rect position);
+	Ball(SDL_Rect position, SDL_Rect screenSize);
 	virtual ~Ball();
 
 	void move(unsigned int elapsedTime);

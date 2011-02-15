@@ -62,6 +62,7 @@ int main(void) {
 			if(defaultLevel->checkBricksCollision(ball)) {
 				ball->bounce();
 			}
+			player->checkCollision(ball);
 			previousTime = actualTime;
 		}
 

@@ -17,6 +17,7 @@ public:
 
 	int draw(SDL_Surface* screen);
 	Ball* giveBall();
+	void checkCollision(Ball* ball);
 	void setPosition(unsigned short int x);
 };
 

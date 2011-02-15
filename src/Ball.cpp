@@ -4,18 +4,33 @@
 
 #include "Ball.h"
 
-Ball::Ball(SDL_Rect position) {
+Ball::Ball(SDL_Rect position, SDL_Rect screenSize) {
 	this->position = position;
-	this->speed = 0.2;
+	this->speed = 0.3;
 	this->direction = M_PI/3;
+	this->screenSize = screenSize;
 }
 
 Ball::~Ball() {
 }
 
 void Ball::move(unsigned int elapsedTime) {
-	this->position.x += this->speed * cos(this->direction) * elapsedTime;
-	this->position.y -= this->speed * sin(this->direction) * elapsedTime;
+	int newX = this->position.x + this->speed * cos(this->direction) * elapsedTime;
+	int newY = this->position.y - this->speed * sin(this->direction) * elapsedTime;
+
+	if(newX < 0 or newX > screenSize.w) {
+		this->direction = M_PI - this->direction;
+	}
+	else {
+		this->position.x = newX;
+	}
+
+	if(newY < 0) {
+		this->bounce();
+	}
+	else {
+		this->position.y = newY;
+	}
 }
 
 SDL_Rect Ball::getPosition() const {
