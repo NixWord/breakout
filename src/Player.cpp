@@ -3,21 +3,26 @@
 #include "Player.h"
 
 Player::Player(SDL_Rect screenSize, unsigned int y) {
-	int defaultWidth = 90;
-	int defaultHeight = 20;
+	int defaultWidth = 100;
+	int defaultHeight = 15;
 
 	this->position.x = (screenSize.w - defaultWidth) / 2;
 	this->position.y = y;
 
 	this->position.w = defaultWidth;
 	this->position.h = defaultHeight;
+
+	this->screenSize = screenSize;
 }
 
 Player::~Player() {
 }
 
 void Player::setPosition(unsigned short int x) {
-	this->position.x = x;
+	unsigned int short halfwidth = this->position.w / 2;
+	if( halfwidth < x and (screenSize.w - halfwidth) > x) {
+		this->position.x = x - position.w / 2;
+	}
 }
 
 int Player::draw(SDL_Surface* screen) {

@@ -7,6 +7,8 @@ class Player {
 private:
 	SDL_Rect position;
 
+	SDL_Rect screenSize;
+
 public:
 	Player(SDL_Rect screenSize, unsigned int y);
 	virtual ~Player();
