@@ -21,10 +21,13 @@ int main(void) {
 
 	Level* defaultLevel = generator->generate();
 
+	unsigned int previousTime = 0;
+	unsigned int actualTime = 0;
+
 	SDL_Event event;
 	bool loop = true;
 	while (loop) {
-		SDL_WaitEvent(&event);
+		SDL_PollEvent(&event);
 
 		switch (event.type) {
 		case SDL_QUIT:
@@ -49,6 +52,15 @@ int main(void) {
 		default:
 			break;
 		}
+
+		actualTime = SDL_GetTicks();
+		unsigned int elapsedTime = actualTime - previousTime;
+		if (elapsedTime > 30)
+		{
+			ball->move(elapsedTime);
+			previousTime = actualTime;
+		}
+
 		defaultLevel->draw(screen);
 		player->draw(screen);
 		ball->draw(screen);

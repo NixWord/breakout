@@ -6,12 +6,22 @@
 
 Ball::Ball(SDL_Rect position) {
 	this->position = position;
+	this->speed = 80;
+	this->direction = M_PI/3;
 }
 
 Ball::~Ball() {
 }
 
+void Ball::move(unsigned int elapsedTime) {
+	double seconds = (double)elapsedTime / 1000.0;
+
+	this->position.x += this->speed * cos(this->direction) * seconds;
+	this->position.y -= this->speed * sin(this->direction) * seconds;
+}
+
 void Ball::draw(SDL_Surface* screen) {
+
 	this->fillCircle(screen, position.x, position.y, 6, 0x113322);
 }
 
