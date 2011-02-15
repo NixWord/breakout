@@ -7,6 +7,7 @@
 
 #include <SDL/SDL.h>
 
+#include "Ball.h"
 #include "Brick.h"
 
 class Level {
@@ -23,6 +24,7 @@ public:
 
 	int draw(SDL_Surface* screen);
 
+	bool checkBricksCollision(Ball* ball);
 	SDL_Rect getDimensions() const;
 	std::string getName() const;
 	void setDimensions(SDL_Rect dimensions);

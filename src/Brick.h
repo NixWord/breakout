@@ -3,6 +3,8 @@
 
 #include <SDL/SDL.h>
 
+#include "Ball.h"
+
 class Brick {
 private:
 	SDL_Rect dimensions;
@@ -12,6 +14,7 @@ public:
 	SDL_Rect getDimensions();
 
 	int draw(SDL_Surface* surface);
+	bool touch(Ball* ball);
 };
 
 #endif /* BRICK_H_ */

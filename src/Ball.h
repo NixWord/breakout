@@ -17,6 +17,9 @@ public:
 
 	void fillCircle(SDL_Surface *surface, int cx, int cy, int radius, Uint32 pixel);
 	void draw(SDL_Surface* screen);
+	void bounce();
+	SDL_Rect getPosition() const;
+	void setPosition(SDL_Rect position);
 };
 
 #endif /* BALL_H_ */

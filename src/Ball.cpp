@@ -6,7 +6,7 @@
 
 Ball::Ball(SDL_Rect position) {
 	this->position = position;
-	this->speed = 80;
+	this->speed = 0.2;
 	this->direction = M_PI/3;
 }
 
@@ -14,10 +14,21 @@ Ball::~Ball() {
 }
 
 void Ball::move(unsigned int elapsedTime) {
-	double seconds = (double)elapsedTime / 1000.0;
+	this->position.x += this->speed * cos(this->direction) * elapsedTime;
+	this->position.y -= this->speed * sin(this->direction) * elapsedTime;
+}
 
-	this->position.x += this->speed * cos(this->direction) * seconds;
-	this->position.y -= this->speed * sin(this->direction) * seconds;
+SDL_Rect Ball::getPosition() const {
+	return position;
+}
+
+void Ball::bounce() {
+	//TODO empecher les overflows
+	this->direction = -this->direction;
+}
+
+void Ball::setPosition(SDL_Rect position) {
+	this->position = position;
 }
 
 void Ball::draw(SDL_Surface* screen) {

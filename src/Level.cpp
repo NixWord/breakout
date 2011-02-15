@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "Level.h"
+#include "Ball.h"
 
 using namespace std;
 
@@ -24,6 +25,19 @@ Level::~Level() {
 	while(!bricks->empty()) delete bricks->back(), bricks->pop_back();
 
 	delete bricks;
+}
+
+bool Level::checkBricksCollision(Ball* ball) {
+	for (unsigned int i=0; i < this->bricks->size(); i++) {
+		Brick* brick = this->bricks->at(i);
+
+		if(brick->touch(ball)) {
+			this->bricks->erase(this->bricks->begin()+i);
+			delete brick;
+			return true;
+		}
+	}
+	return false;
 }
 
 int Level::draw(SDL_Surface* screen) {

@@ -10,7 +10,7 @@ int main(void) {
 
 	SDL_Init(SDL_INIT_VIDEO);
 
-	screen = SDL_SetVideoMode(applicationSize.w, applicationSize.h, 32, SDL_HWSURFACE);
+	screen = SDL_SetVideoMode(applicationSize.w, applicationSize.h, 32, SDL_HWSURFACE | SDL_DOUBLEBUF);
 	SDL_WM_SetCaption("Breakout", NULL);
 
 	SDL_Rect brickShape = {0, 0, 63, 20};
@@ -23,6 +23,7 @@ int main(void) {
 
 	unsigned int previousTime = 0;
 	unsigned int actualTime = 0;
+	unsigned int elapsedTime = 0;
 
 	SDL_Event event;
 	bool loop = true;
@@ -54,10 +55,13 @@ int main(void) {
 		}
 
 		actualTime = SDL_GetTicks();
-		unsigned int elapsedTime = actualTime - previousTime;
-		if (elapsedTime > 30)
+		elapsedTime = actualTime - previousTime;
+		if (elapsedTime > 22)
 		{
 			ball->move(elapsedTime);
+			if(defaultLevel->checkBricksCollision(ball)) {
+				ball->bounce();
+			}
 			previousTime = actualTime;
 		}
 
@@ -65,6 +69,7 @@ int main(void) {
 		player->draw(screen);
 		ball->draw(screen);
 		SDL_Flip(screen);
+		SDL_Delay(5);
 	}
 
 	delete defaultLevel;
