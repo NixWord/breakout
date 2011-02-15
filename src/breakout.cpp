@@ -17,6 +17,7 @@ int main(void) {
 	LevelGenerator* generator = new LevelGenerator(applicationSize, brickShape);
 
 	Player* player = new Player(applicationSize, 420);
+	Ball* ball = player->giveBall();
 
 	Level* defaultLevel = generator->generate();
 
@@ -50,11 +51,13 @@ int main(void) {
 		}
 		defaultLevel->draw(screen);
 		player->draw(screen);
+		ball->draw(screen);
 		SDL_Flip(screen);
 	}
 
 	delete defaultLevel;
 	delete player;
+	delete ball;
 
 	delete generator;
 

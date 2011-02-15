@@ -3,6 +3,8 @@
 
 #include <SDL/SDL.h>
 
+#include "Ball.h"
+
 class Player {
 private:
 	SDL_Rect position;
@@ -14,6 +16,7 @@ public:
 	virtual ~Player();
 
 	int draw(SDL_Surface* screen);
+	Ball* giveBall();
 	void setPosition(unsigned short int x);
 };
 

@@ -47,8 +47,9 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_breakout_OBJECTS = breakout.$(OBJEXT) Brick.$(OBJEXT) \
-	Level.$(OBJEXT) LevelGenerator.$(OBJEXT) Player.$(OBJEXT)
+am_breakout_OBJECTS = Ball.$(OBJEXT) breakout.$(OBJEXT) \
+	Brick.$(OBJEXT) Level.$(OBJEXT) LevelGenerator.$(OBJEXT) \
+	Player.$(OBJEXT)
 breakout_OBJECTS = $(am_breakout_OBJECTS)
 breakout_DEPENDENCIES =
 DEFAULT_INCLUDES = -I.@am__isrc@
@@ -160,7 +161,8 @@ target_vendor = @target_vendor@
 top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
-breakout_SOURCES = breakout.cpp \
+breakout_SOURCES = Ball.cpp \
+breakout.cpp \
 Brick.cpp \
 Level.cpp \
 LevelGenerator.cpp \
@@ -248,6 +250,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Ball.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Brick.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Level.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/LevelGenerator.Po@am__quote@

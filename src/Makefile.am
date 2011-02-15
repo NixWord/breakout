@@ -1,5 +1,6 @@
 bin_PROGRAMS=breakout
-breakout_SOURCES=breakout.cpp \
+breakout_SOURCES=Ball.cpp \
+breakout.cpp \
 Brick.cpp \
 Level.cpp \
 LevelGenerator.cpp \
