@@ -12,5 +12,5 @@ SDL_Rect Brick::getDimensions() {
 }
 
 int Brick::draw(SDL_Surface* surface) {
-	return SDL_FillRect(surface, &this->dimensions, 0xFF000000);
+	return SDL_FillRect(surface, &this->dimensions, 0xCCCCCC);
 }

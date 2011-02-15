@@ -12,7 +12,7 @@ int main(void) {
 	screen = SDL_SetVideoMode(applicationSize.w, applicationSize.h, 32, SDL_HWSURFACE);
 	SDL_WM_SetCaption("Breakout", NULL);
 
-	SDL_Rect brickShape = {0, 0, 60, 20};
+	SDL_Rect brickShape = {0, 0, 63, 20};
 	LevelGenerator* generator = new LevelGenerator(applicationSize, brickShape);
 
 	Level* defaultLevel = generator->generate();
