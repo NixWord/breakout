@@ -1,6 +1,7 @@
 #include <SDL/SDL.h>
 
 #include "LevelGenerator.h"
+#include "Player.h"
 
 int main(void) {
 	SDL_Surface* screen = NULL;
@@ -15,6 +16,8 @@ int main(void) {
 	SDL_Rect brickShape = {0, 0, 63, 20};
 	LevelGenerator* generator = new LevelGenerator(applicationSize, brickShape);
 
+	Player* player = new Player(applicationSize, 420);
+
 	Level* defaultLevel = generator->generate();
 
 	SDL_Event event;
@@ -25,6 +28,10 @@ int main(void) {
 		switch (event.type) {
 		case SDL_QUIT:
 			loop = false;
+			break;
+
+		case SDL_MOUSEMOTION:
+			player->setPosition(event.motion.x);
 			break;
 
 		case SDL_KEYDOWN:
@@ -42,10 +49,12 @@ int main(void) {
 			break;
 		}
 		defaultLevel->draw(screen);
+		player->draw(screen);
 		SDL_Flip(screen);
 	}
 
 	delete defaultLevel;
+	delete player;
 
 	delete generator;
 

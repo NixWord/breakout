@@ -12,6 +12,7 @@ public:
 	virtual ~Player();
 
 	int draw(SDL_Surface* screen);
+	void setPosition(unsigned short int x);
 };
 
 #endif /* PLAYER_H_ */
