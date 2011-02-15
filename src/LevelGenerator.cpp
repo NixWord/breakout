@@ -24,5 +24,6 @@ Level* LevelGenerator::generate() {
 		Brick* brick = new Brick(newBrickReck);
 		bricks->push_back(brick);
 	}
+	level->setBricks(bricks);
 	return level;
 }

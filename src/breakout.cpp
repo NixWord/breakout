@@ -42,6 +42,7 @@ int main(void) {
 			break;
 		}
 		defaultLevel->draw(screen);
+		SDL_Flip(screen);
 	}
 
 	delete defaultLevel;

@@ -1,5 +1,6 @@
 #include <SDL/SDL.h>
 #include <string>
+#include <iostream>
 
 #include "Level.h"
 
@@ -9,7 +10,7 @@ Level::Level(string name, SDL_Rect dimensions) {
 	this->setName(name);
 	this->setDimensions(dimensions);
 
-	this->surface = SDL_CreateRGBSurface(SDL_HWSURFACE, dimensions.x, dimensions.y, 32, 0, 0, 0, 0);
+	this->surface = SDL_CreateRGBSurface(SDL_HWSURFACE, dimensions.w, dimensions.h, 32, 0, 0, 0, 0);
 }
 
 static bool deleteAll(Brick* theElement) {
@@ -26,6 +27,12 @@ Level::~Level() {
 }
 
 int Level::draw(SDL_Surface* screen) {
+	SDL_FillRect(this->surface, NULL, 0xFFFFFF);
+
+	for (unsigned int i=0; i < this->bricks->size(); i++) {
+		this->bricks->at(i)->draw(this->surface);
+	}
+
 	return SDL_BlitSurface(this->surface, NULL, screen, NULL);
 }
 
